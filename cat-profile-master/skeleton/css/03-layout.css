@@ -1,0 +1,35 @@
+
+.content {
+  position: relative;
+  width: 900px;
+  background: #fff;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin: auto;
+}
+
+.content:before {
+  display: block;
+  position: absolute;
+  width: 1px;
+  left: 240px;
+  top: 200px;
+  bottom: 0;
+  background: #ccc;
+  content: "";
+}
+
+.content-sidebar {
+  float: left;
+  width: 200px;
+  min-height: 200px;
+  padding: 20px;
+}
+
+.content-main {
+  float: right;
+  min-height: 200px;
+  width: 620px;
+  padding: 20px;
+}

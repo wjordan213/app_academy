@@ -1,0 +1,28 @@
+<h2>New list!</h2>
+
+<form class="newList">
+  <input type="hidden" name="list[board_id]" value="<%= board_id %>">
+  <label class="ranks">list rank:</label><br>
+
+  <label for="list_rank">1</label>
+  <input type="radio" name="list[ord]" value="1">
+
+  <label for="list_rank">2</label>
+  <input type="radio" name="list[ord]" value="2">
+
+  <label for="list_rank">3</label>
+  <input type="radio" name="list[ord]" value="3">
+
+  <label for="list_rank">4</label>
+  <input type="radio" name="list[ord]" value="4">
+
+  <label for="list_rank">5</label>
+  <input type="radio" name="list[ord]" value="5"><br>
+
+  <label for="list_title">List Title:</label><br>
+  <input type="text" name="list[title]">
+
+  <button class="submit">submit</button>
+</form>
+
+<footer><a href="/#boards/<%= board_id %>">back to board</a></footer>

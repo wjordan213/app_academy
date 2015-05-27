@@ -1,0 +1,60 @@
+<h1><%= "#{@user.username}'s Goals" %></h1>
+
+<h2>New Goal</h2>
+<%= render 'shared/form', goal: @goal %>
+
+<% if @complete_goals %>
+  <h2>Complete Goals</h2>
+  <ul>
+    <% @complete_goals.each do |goal| %>
+      <li><a href="<%= goal_url(goal) %>"><%= goal.title %></a>   <a href="<%= edit_goal_url(goal) %>">edit</a></li>
+      <p>
+        <%= goal.notes %>
+      </p>
+      <form action="<%= goal_url(goal) %>" method="post">
+        <%= auth_token %>
+        <input type="hidden" name="_method" value="Patch">
+        <input type="hidden" name="goal[completed]" value="false">
+
+        <button>uncomplete goal</button>
+      </form>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @incomplete_goals %>
+  <h2>Incomplete Goals</h2>
+  <ul>
+    <% @incomplete_goals.each do |goal| %>
+      <li><a href="<%= goal_url(goal) %>"><%= goal.title %></a>  <a href="<%= edit_goal_url(goal) %>">edit</a></li>
+      <p>
+        <%= goal.notes %>
+      </p>
+      <form action="<%= goal_url(goal) %>" method="post">
+        <%= auth_token %>
+        <input type="hidden" name="_method" value="Patch">
+        <input type="hidden" name="goal[completed]" value="true">
+
+        <button>complete goal</button>
+      </form>
+    <% end %>
+  </ul>
+<% end %>
+
+<h2>Comments</h2>
+<% @user.comments.each do |comment| %>
+  <p>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+
+<h2>Comment on this user</h2>
+<form action="<%= comments_url %>" method="post">
+  <input type="hidden" name="comment[commentable_type]" value="<%= @user.class.to_s %>">
+  <input type="hidden" name="comment[commentable_id]" value="<%= @user.id %>">
+
+  <label for="user_comment_body">Comment</label>
+  <textarea name="comment[body]" rows="8" cols="40" id="user_comment_body"></textarea>
+  <button>Submit Comment</button>
+</form>

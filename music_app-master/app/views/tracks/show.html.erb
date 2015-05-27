@@ -1,0 +1,21 @@
+<h1><%=@track.name%></h1>
+
+<h2>Album</h2>
+<%= @track.album.name %>
+<ul>
+  <li><%= @track.bonus_or_regular %></li>
+</ul>
+
+<h1>Lyrics</h1>
+<p>
+  <%= ugly_lyrics(@track.lyrics).html_safe %>
+</p>
+<section>
+  <% @track.notes.each do  |note| %>
+    <%= render 'notes/note', note: note %><br>
+  <% end %>
+</section>
+<%= render 'notes/form', track: @track %>
+
+<a href="<%= album_url(@track.album) %>">back to album</a>
+<a href="<%= edit_track_url(@track) %>">edit track</a>

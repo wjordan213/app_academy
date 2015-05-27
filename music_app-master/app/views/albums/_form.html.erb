@@ -1,0 +1,26 @@
+<%= render 'shared/errors' %>
+<form action="<%= albums_url %>" method="post">
+  <% if @album.id.nil? %>
+    <input type="hidden" name="band_id" value="<%= album.band_id %>">
+  <% else %>
+    <input type="hidden" name="_method" value="PATCH">
+  <% end %>
+
+  <%= auth_token %>
+  <label for="album_name">name</label>
+  <input type="text" name="album[name]">
+
+    <h3>Was it recorded live or in a studio?</h3>
+    <input type="radio" name="album[studio_or_live]" id="album_studio_or_live" value="studio" <%= "checked" if album.studio_or_live == "studio" %>>
+    <label for="album_studio_or_live">studio</label><br>
+
+    <input type="radio" name="album[studio_or_live]" id="album_studio_or_live" value="live" <%= "checked" if album.studio_or_live == "live" %>>
+    <label for="album_studio_or_live">live</label><br>
+    <button>submit</button>
+
+    <select name="album[band_id]">
+      <% bands.each do |band| %>
+        <option value="<%= band.id %>" <%= "selected" if band.id == @album.band_id %>><%= band.name %></option>
+      <% end %>
+    </select>
+</form>

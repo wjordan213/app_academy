@@ -1,0 +1,30 @@
+<h1><%= @goal.title %></h1>
+
+<ul>
+  <li>goalee: <a href="<%= user_url(@goal.user) %>"><%= @goal.user.username %></a></li>
+  <li><%= @goal.due_date %></li>
+  <li><%= @goal.private_or_public %></li>
+</ul>
+
+<section>
+  <p>
+    <%= @goal.notes  %>
+  </p>
+</section>
+
+<h2>Comments</h2>
+<% @goal.comments.each do |comment| %>
+  <p>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<h2>Comment on this goal</h2>
+<form action="<%= comments_url %>" method="post">
+  <input type="hidden" name="comment[commentable_type]" value="<%= @goal.class.to_s %>">
+  <input type="hidden" name="comment[commentable_id]" value="<%= @goal.id %>">
+
+  <label for="user_comment_body">Comment</label>
+  <textarea name="comment[body]" rows="8" cols="40" id="user_comment_body"></textarea>
+  <button>Submit Comment</button>
+</form>

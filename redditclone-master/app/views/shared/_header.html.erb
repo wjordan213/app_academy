@@ -1,0 +1,17 @@
+<% if logged_in? %>
+<% end %>
+<nav>
+  <% if logged_in? %>
+    <form action="<%= session_url(session) %>" method ="post">
+      <%= auth_token %>
+      <input type="hidden" name="_method" value="delete">
+      <button>logout</button>
+    </form>
+    <a href="<%= user_url(current_user) %>" >My profile</a>
+    <a href="<%= new_sub_url %>">create new sub</a>
+    <a href="<%= new_post_url %>">new post</a>
+  <% else %>
+    <a href="<%= new_session_url %>">log in</a>
+  <% end %>
+  <a href="<%= subs_url %>">view all subs</a>
+</nav>

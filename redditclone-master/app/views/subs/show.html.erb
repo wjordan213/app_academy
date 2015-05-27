@@ -1,0 +1,31 @@
+<h1><%= @sub.title %></h1>
+
+<section>
+  <h2>Sub Description</h2>
+  <p><%= @sub.description %></p>
+
+  <footer>
+    <strong>mod: </strong><a href="<%= user_url(@sub.mod.id) %>"><%= @sub.mod.username %></a>
+  </footer>
+</section>
+
+<section>
+  <h2>General </h2>
+  <nav>
+    <% if logged_in? %>
+    <li><a href="<%= new_post_url %>">create post</a></li>
+      <% if current_user == @sub.mod %>
+        <li><a href="<%= edit_sub_url(@sub) %>">edit sub</a></li>
+      <% end %>
+    <% end %>
+  </nav>
+</section>
+
+<section>
+<h2>Posts</h2>
+  <ul>
+    <% @posts.each do |post| %>
+      <li><a href="<%= post_url(post) %>"><%= post.title %></a>
+    <% end %>
+  </ul>
+</section>

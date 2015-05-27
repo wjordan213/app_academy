@@ -1,0 +1,14 @@
+<h1>comment on <%= @comment.post.title %></h1>
+
+<form action="<%= comments_url %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="comment[post_id]" value="<%= @comment.post.id %>">
+  <input type="hidden" name="comment[author_id]" value="<%= current_user.id %>">
+
+  <textarea name="comment[content]" rows="8" cols="40"><%= @comment.content %></textarea><br>
+  <button>submit</button><br>
+</form>
+
+<nav>
+  <a href="<%= post_url(@comment.post) %>">back to <%= @comment.post.title %></a>
+</nav>

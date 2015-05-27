@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Cool Website!</title>
+    <script src="../jquery-2.1.3.js"></script>
+    <script src="./tabs.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.17.2/build/cssreset/cssreset-min.css">
+    <link href="./tabs.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+
+    <h1>Hellow there world</h1>
+
+    <ul class="tabs" data-content-tabs="#content-tabs">
+      <li><a href="#AussieShepherd" class="active">Aussie Shepherd</a></li>
+      <li><a href="#BurmeseMountainDog">Burmese Mountain Dog</a></li>
+      <li><a href="#BlackLab">Black Lab</a></li>
+    </ul>
+
+    <section id="content-tabs">
+      <article class="tab-pane active" id="AussieShepherd">
+        <p>
+          Aussie Shepherd are known for being extraordinarily energetic. They are
+          a great size for house dogs. They are cute, and can occasionallly be
+          homicidal. They also have diffferent color eyes, which is cool.
+        </p>
+      </article>
+
+      <article class="tab-pane" id="BurmeseMountainDog">
+        <p>
+          Burmese mountain dogs are really, really big. Back in the olden days
+          they would be drinking buddies with Saint Bernards.
+        </p>
+
+      </article>
+
+      <article class="tab-pane" id="BlackLab">
+        <p>
+          Black labs are awesome and friendly. They swim like champs. If you
+          swim in a pool they'll follow you around, which is super cute.
+        </p>
+      </article>
+    </section>
+
+    <script>
+      //our scripts here
+        $('.tabs').tabs();
+    </script>
+  </script>
+  </body>
+</html>

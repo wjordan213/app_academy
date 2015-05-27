@@ -1,0 +1,23 @@
+<% if goal.persisted? %>
+  <form action="<%= goal_url(goal) %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+<% else %>
+  <form action="<%= goals_url %>" method="post">
+<% end %>
+  <%= auth_token %>
+  <label for="goal_title">Title</label>
+  <input type="text" name="goal[title]" id="goal_title" value="<%= goal.title %>">
+
+  <label for="goal_notes">Notes</label>
+  <textarea name="goal[notes]" rows="8" cols="40" id="goal_notes"><%= goal.notes %></textarea>
+
+  <label for="goal_due_date">Due Date</label>
+  <input type="date" name="goal[due_date]" value="<%= goal.due_date %>">
+
+  <% ['public', 'private'].each do |option| %>
+    <input type="radio" name="goal[private_or_public]" id="<%= option %>" value=<%= option %> <%= "selected" if goal.private_or_public == option %>>
+    <label for="goal_private_or_public"><%= option.capitalize %></label>
+  <% end %>
+
+  <button> <%= goal.persisted? ? "Update Goal" : "Submit New Goal" %></button>
+</form>

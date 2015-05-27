@@ -1,0 +1,12 @@
+
+<h1> <%= (file == :login)? "Log in!" : "Sign up!" %></h1>
+
+<form action="<%= file == :login ? session_url : users_url %>" method="post">
+  <%= auth_token %>
+  <label for="user_email">email</label>
+  <input id="user_email" type="text" name="user[email]"><br>
+
+  <label for="user_password">password</label>
+  <input type="password" name="user[password]"><br>
+  <button type="submit">submit</button>
+</form>

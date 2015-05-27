@@ -1,0 +1,7 @@
+<h1>BANDS!!!!!</h1>
+<% @bands.each do |band| %>
+  <a href="<%= band_url(band.id) %>"><%= band.name %></a>
+  <%= render 'shared/band', band: band %>
+<% end %>
+
+<a href="<%= new_band_url %>">make a new band</a>

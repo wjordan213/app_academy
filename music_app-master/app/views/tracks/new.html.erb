@@ -1,0 +1,5 @@
+<!-- dropdown for album -->
+<!-- radio for bonus_or_regular -->
+<!-- textarea for user to enter lyrics -->
+<%= render 'form', track: @track, albums: @albums %>
+<a href="<%= album_url(@track.album) %>">back to album</a>

@@ -1,0 +1,29 @@
+<article>
+  <h1>Sub: <%= @post.title %></h1>
+  <p>
+    <%= @post.content %>
+  </p>
+  <footer><em>author:</em> <%= @post.author.username %></footer>
+</article>
+<nav>
+  <% if current_user == @post.author %>
+      <a href="<%= edit_post_url(@post) %>">edit</a>
+  <% end %>
+  <% if logged_in? %>
+    <a href="<%= new_post_comment_url(@post.id) %>">Comment on <%= @post.title %></a>
+  <% end %>
+  <nav>
+    <% @post.subs.each do |sub| %>
+      <a href="<%= sub_url(sub) %>">go to <%= sub.title %></a>
+    <% end %>
+  </nav>
+</nav>
+
+<section>
+  <h2>comments</h2>
+  <ul>
+    <% @top_comments.each do |comment| %>
+      <%= render 'comment', comments: [comment], all_comments: @all_comments %>
+    <% end %>
+  </ul>
+</section>

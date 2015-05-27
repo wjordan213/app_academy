@@ -1,0 +1,24 @@
+<h1>New Card</h1>
+<form>
+<input type="hidden" name="card[list_id]" value="<%= list_id %>">
+
+<label for="card_title">Title</label>
+<input type="text" name="card[title]" value="<%= card.get('title') %>">
+
+<label for="card_description">Card Description</label>
+<textarea name="card[description]" rows="8" cols="40"></textarea>
+
+<label>Importance:</label>
+<label>0</label>
+<input type="radio" name="card[ord]" value="0">
+<label>1</label>
+<input type="radio" name="card[ord]" value="1">
+<label>2</label>
+<input type="radio" name="card[ord]" value="2">
+<label>3</label>
+<input type="radio" name="card[ord]" value="3">
+<label>4</label>
+<input type="radio" name="card[ord]" value="4">
+
+<button class="submit">submit</button>
+</form>

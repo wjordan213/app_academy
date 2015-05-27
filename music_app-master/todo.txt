@@ -1,0 +1,13 @@
+TODO:
+  format the lyrics to each track like so:
+  ♫ And I was like baby, baby, baby, oh
+  ♫ Like baby, baby, baby, no
+  ♫ Like baby, baby, baby, oh
+  ♫ I thought you'd always be mine, mine
+
+  -write a helper ugly_lyrics(lyrics) that will:
+    -break up the lyrics on newlines (i.e. lyrics.split("\n"))
+    -insert character &#9835
+    -Properly escape user input (htmlsafe)
+    -wrap lyrics in a pre tag. has to do with preserving whitespace and newlines
+    -mark the rendered html as safe for insertion

@@ -1,0 +1,30 @@
+<%= render 'shared/errors' %>
+<h1> <%= track.id.nil? ? "New" : "Edit" %> Track!</h1>
+  <% if track.id.nil? %>
+    <form action="<%= tracks_url %>" method="post">
+  <% else %>
+    <form action="<%= track_url(track) %>" method="post">
+    <input type="hidden" name="_method" value="PATCH">
+  <% end %>
+  <%= auth_token %>
+
+  <label for="track_name">name of track</label><br>
+  <input type="text" name="track[name]" value="<%= track.name %>"><br>
+
+  <select name="track[album_id]">
+    <% albums.each do |album| %>
+      <option value="<%= album.id %>" <%= "selected" if album.id == @track.album_id %>><%= album.name %></option>
+    <% end %>
+  </select><br>
+
+  <input type="radio" name="track[bonus_or_regular]" value="bonus" <%= "checked" if track.bonus_or_regular == "bonus" %>>
+  <label for="track_bonus_or_regular">bonus</label><br>
+
+  <input type="radio" name="track[bonus_or_regular]" value="regular" <%= "checked" if track.bonus_or_regular == "regular" %>>
+  <label for="track_bonus_or_regular">regular</label><br>
+
+
+  <textarea name="track[lyrics]" rows="8" cols="40"><%= track.lyrics %></textarea><br>
+
+  <button>submit</button>
+</form>

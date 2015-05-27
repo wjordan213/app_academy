@@ -1,0 +1,27 @@
+article.tab-pane {
+  display: none;
+  position: absolute;
+  opacity: 1;
+
+  /*why is this not better?*/
+  transition: opacity 500ms;
+}
+
+article.tab-pane.active {
+  display: block;
+  opactiy: 1;
+}
+
+
+.tabs a.active {
+  font-weight: bold;
+}
+
+article.tab-pane.transitioning {
+  display: block;
+  opacity: 0;
+}
+
+section {
+  position: relative;
+}

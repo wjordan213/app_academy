@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redditclone</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <ul>
+  <% if flash.now[:errors] %>
+    <% flash.now[:errors].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  <% end %>
+  </ul>
+<%= render 'shared/header' %>
+<%= yield %>
+
+</body>
+</html>

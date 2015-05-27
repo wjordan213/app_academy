@@ -1,0 +1,21 @@
+<h1><%= @album.name %></h1>
+<ul>
+  <li><%= @album.studio_or_live %></li>
+  <li>band: <a href="<%= band_url(@band) %>"><%= @band.name %></a></li>
+</ul>
+<a href="<%= edit_album_url(@album) %>">edit album</a>
+
+<h2>tracks</h2>
+<ul>
+  <% @album.tracks.each do |track| %>
+    <li><a href="<%= track_url(track) %>"><%= track.name %></a></li>
+  <% end %>
+</ul>
+
+<a href="<%= new_album_track_url(@album.id) %>">create new track!</a>
+
+<form action="<%= album_url(@album) %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="DELETE">
+  <button>Destroy</button>
+</form>

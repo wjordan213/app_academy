@@ -1,0 +1,54 @@
+<h1> <%= @cat.name %> </h1>
+
+<table>
+  <tr>
+    <th>color</th>
+    <th>age   </th>
+    <th>sex</th>
+
+  </tr>
+  <tr>
+    <td><%= @cat.color %></td>
+    <td><%= @cat.age %></td>
+    <td> <%= @cat.sex %></td>
+  </tr>
+</table>
+<h2> Rented Dates <h2>
+  <ul>
+    <li>start date, end date, status</li>
+    <% @approved_requests.each do |request| %>
+      <li><%= request.start_date %>, <%= request.end_date %>,  <%= request.status %></li>
+    <% end %>
+  </ul>
+
+<h2> Description</h2>
+<%= @cat.description %><br>
+
+<% if @cat.user_id == current_user.id %>
+<a href="<%=edit_cat_url(@cat)%>">Edit Cat</a>
+
+<form action="<%=cat_url(@cat)%>" method="POST">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Destroy this cat">
+</form>
+  <h2> Pending Dates <h2>
+    <ul>
+      <li>start date, end date</li>
+      <% @pending_requests.each do |request| %>
+        <li><%= request.start_date %>, <%= request.end_date %>, <%= User.find(request.user_id).user_name %>
+        <form method='post' action='  <%= cat_rental_deny_url(request.id) %>'>
+          <%= auth_token %>
+          <input type="hidden" name="_method" value='PATCH'>
+          <input type="submit" value="deny"></form></li>
+
+        <form method='post' action='  <%= cat_rental_approve_url(request.id) %>'>
+          <%= auth_token %>
+          <input type="hidden" name="_method" value='PATCH'>
+          <input type="submit" value="approve"></form></li>
+
+
+        <!-- TODO: auto remove pending requests with overlapping dates -->
+      <% end %>
+    </ul>
+  <% end %>

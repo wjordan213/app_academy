@@ -1,0 +1,62 @@
+<% if  @cat.id%>
+  <h1>Edit your cat!</h1>
+<% else %>
+  <h1>Create a cat! </h1>
+<% end %>
+<!-- edit: cat_url(@cat)
+ -->
+<!-- new: cats_url -->
+<% if  @cat.id%>
+  <form action="<%= cat_url(@cat) %>" method="post">
+  <input type="hidden" name="_method" value="Patch">
+<% else %>
+  <form action="<%= cats_url %>" method="post">
+<% end %>
+<%= auth_token %>
+
+<!-- name -->
+<label for="cat_name">Name</label><br>
+<textarea name="cat[name]" id = 'cat_name' row = 1 ><%= @cat.name %></textarea><br>
+
+<!-- color -->
+<label for="cat_color">Color</label><br>
+
+
+
+<select name="cat[color]">
+  <% temp = @cat.class::COLORS %>
+  <% temp.unshift(temp.delete(@cat.color)) %>
+  <% temp.each do |color| %>
+    <% if color.nil? %>
+      <option value= "">Select color</option>
+    <% else %>
+      <option value= "<%= color %>" ><%= color %></option>
+    <% end %>
+  <% end %>
+ </select><br>
+
+<label for="cat_birth_date">Birth day</label><br>
+<input name="cat[birth_date]" id="cat_birth_date" type="date"
+  value=<%= @cat.birth_date %>></input><br>
+
+<label>Sex</label>
+ <!-- note that both radio buttons have the name `cat[sex]`; that's how
+      they are related -->
+
+
+ <input name="cat[sex]" id="cat_sex_m" type="radio" value="m"
+        <%= cat_default_sex('m') %>>
+ <label for="cat_sex_m">Male</label>
+ <input name="cat[sex]" id="cat_sex_f" type="radio" value="f"
+          <%= cat_default_sex('f') %>>
+ <label for="cat_sex_f">Female</label>
+ <br>
+
+<label for="cat_description">Describe your cat!</label><br>
+<textarea name="cat[description]" id = "cat_description" rows = 20 cols = 50>
+  <%= @cat.description %>
+</textarea><br>
+
+<input type="submit" value="Submit">
+
+</form>

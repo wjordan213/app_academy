@@ -1,0 +1,16 @@
+<%if new_sub.persisted? %>
+  <form action="<%= sub_url(new_sub) %>" method="POST">
+    <input type="hidden" name="_method" value="PATCH">
+<% else %>
+  <form action="<%= subs_url %>" method="POST">
+<% end %>
+  <%= auth_token %>
+  <label>Title</label>
+  <input type="text" name="sub[title]" value="<%=new_sub.title %>">
+  <br>
+  <label>Description</label>
+  <textarea name="sub[description]" value="<%= new_sub.description %>"></textarea>
+  <br>
+  <input type="hidden" name="sub[user_id]" value="<%= current_user.id %>">
+  <button>Submit</button>
+</form>

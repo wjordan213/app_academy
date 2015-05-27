@@ -1,0 +1,2 @@
+TODO:
+-make tests for all the elements of the goal show page

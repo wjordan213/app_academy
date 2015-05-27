@@ -1,0 +1,11 @@
+%h1= @user.id ? "Edit" : "Signup"
+
+%form{:action => users_url, :method => "post"}
+  = auth_token
+  %label Username
+  %input{type: "text", name: "user[username]", value: user.username}
+  <br>
+  %label Password
+  %input{type: "password", name: "user[password]"}
+  <br>
+  %button Submit

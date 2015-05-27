@@ -1,0 +1,20 @@
+<% comments.each do |comment| %>
+  <% children = all_comments[comment.id]%>
+  <% if children.count == 0 %>
+    <li>
+      <%= comment.content %><br>
+      <a href="<%= comment_url(comment) %>">reply</a>
+      <footer>comment author: <a href="<%= user_url(comment.author) %>"><%= comment.author.username %></a></footer>
+    </li>
+  <% else %>
+    <li>
+      <%= comment.content %><br>
+      <a href="<%= comment_url(comment) %>">reply</a>
+      <footer>comment author: <a href="<%= user_url(comment.author) %>"><%= comment.author.username %></a></footer>
+    </li>
+
+    <ul>
+      <%= render 'comment', comments: children, all_comments: all_comments %>
+    </ul>
+  <% end %>
+<% end %>

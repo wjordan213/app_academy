@@ -1,0 +1,53 @@
+/* PHASE 2: Notifications */
+.header {
+  position: relative;
+  z-index: 1
+}
+
+.badge {
+  font-size: 14px;
+  background: #000;
+  border-radius: 50%;
+  font-weight: 400;
+  /*display: block;*/
+  padding: 4px 7px;
+}
+
+
+.notification {
+  position: relative;
+}
+
+.notification:hover {
+  background: #000;
+}
+
+.notification:hover .badge {
+  background: #f00;
+}
+
+.notification > ul {
+  display: none;
+  position: absolute;
+  white-space: nowrap;
+  background: #fff;
+  color: #000;
+  font-size: 14px;
+}
+
+.notification:hover > ul {
+  display: block;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.notification > ul > li {
+  border-top: 1px solid #ccc;
+}
+
+.notification > ul > li a:hover {
+  background: #eee;
+}
