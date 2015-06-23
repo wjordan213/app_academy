@@ -1,0 +1,15 @@
+feature additions/changes:
+  -add drag factor to ship
+  -change event listener on direction keys to give more consistency to accelleration
+    -modify bindKeyHandlers in game view.
+    -check if key is pressed at each step
+
+
+refactor:
+  -change checkCollisions to only check for collision with ship.
+    -make sure to look at assignment before doing this
+    -follow that up by changing collideWith on asteroid function because it then no longer needs to check to see if the object is an instance of ship
+
+  -remove isShip after confirming its not needed for bullet
+
+  -MIGHT want the draw function to be in gameview instead of game
